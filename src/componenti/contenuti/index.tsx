@@ -9,8 +9,7 @@ function Contenuti () {
         <div className="contenuti">
              {jsonData?.slice().reverse().map((item) => (
                 <div className="post">
-                    <p className="id">{item.id} {item.title}</p>
-                    
+                    <p className="id"><h3>{item.id}- {item.title}</h3></p>
                     <p className="body">{item.body}</p>
                 </div>
      )) 
