@@ -1,0 +1,11 @@
+.footer {
+  justify-content: center;
+  bottom: 0;
+  background-color: hsl(204, 70%, 53%);
+  color: white; 
+  display: flex;
+  flex: 1;
+  
+
+  } 
+    

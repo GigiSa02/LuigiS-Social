@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import Topbar from './componenti/topbar';
+import Contenuti from './componenti/contenuti';
+import Footer from './componenti/footer';
+import {Post, TPost} from './types/commontypes';
+import { AppContext } from './context/appcontext';
 
 function App() {
+
+  const[jsonData, setJsonData] = useState<Post[] | undefined>()
+  const propTypes = {jsonData, setJsonData}
+
+  useEffect(() => {
+  fetch('https://dummyjson.com/posts')
+.then(response => response.json())
+.then(json => setJsonData(json.posts))
+  }, [] )
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppContext.Provider value={propTypes}>
+    <Topbar></Topbar>
+    <Contenuti></Contenuti>
+    <Footer></Footer>
+    </AppContext.Provider>
     </div>
-  );
+  )
 }
 
 export default App;
